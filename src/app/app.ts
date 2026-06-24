@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { ProductSelection } from './products/product-selection/product-selection';
+import { ReviewSearch } from './reviews/review-search/review-search';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [ProductSelection, ReviewSearch],
   templateUrl: './app.html',
-  styleUrl: './app.css',
+  styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('upskill');
+  protected title = 'Acme Product Management';
 }
