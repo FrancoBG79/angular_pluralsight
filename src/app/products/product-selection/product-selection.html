@@ -3,6 +3,13 @@
     {{pageTitle}}
   </div>
 
+  @if (showHelp()) {
+    <div class="help">
+      <div>Select a product from the list below to see its details, reviews, and pricing information.</div>
+      <div>Press ESC to escape this message.</div>
+    </div>
+  }
+
   @if (isLoading()) {
     <div>...loading products</div>
   } @else if (errorMessage()) {
@@ -26,6 +33,10 @@
       <div class="row">
         <div class="cellLeft">Description:</div>
         <div class="cellRight">{{selectedProduct()?.description}}</div>
+      </div>
+      <div class="row">
+        <div class="cellLeft">Suppliers:</div>
+        <div class="cellRight">{{suppliers()}}</div>
       </div>
       <div class="row">
         <div class="cellLeft">Price:</div>
