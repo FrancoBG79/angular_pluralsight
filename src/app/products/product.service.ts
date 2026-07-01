@@ -27,6 +27,11 @@ export class ProductService {
     defaultValue: [],
   });
 
+  readonly products$ = this.http.get<Product[]>(this.productsUrl).pipe(
+      tap(() => console.log('Get all products')),
+      catchError(err => this.handleError(err))
+    );
+
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl).pipe(
       tap(() => console.log('Get all products')),
