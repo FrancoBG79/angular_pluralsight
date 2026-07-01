@@ -1,8 +1,10 @@
-import { HttpClient, httpResource } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Product } from './product';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
+import { ProductData } from './product-data';
+import { HttpErrorService } from '../utilities/http-error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ import { map } from 'rxjs';
 export class ProductService {
   private productsUrl = 'api/products';
   private http = inject(HttpClient);
+  private errorService = inject(HttpErrorService);
 
   // Signals to support the template
   selectedProduct = signal<Product | undefined>(undefined);
@@ -22,6 +25,27 @@ export class ProductService {
       ),
     defaultValue: [],
   });
+
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.productsUrl).pipe(
+      tap(() => console.log('Get all products')),
+      catchError(err => this.handleError(err))
+    );
+  }
+
+  getProduct(id: number): Observable<Product> {
+    const productUrl = `${this.productsUrl}/${id}`;
+    return this.http.get<Product>(productUrl).pipe(
+      tap(() => console.log('Get product by ID')),
+      catchError(err => this.handleError(err))
+    );
+  }
+
+  private handleError(err: HttpErrorResponse): Observable<never> {
+    const formattedMessage = this.errorService.formatError(err);
+    // throw formattedMessage;
+    return throwError(() => formattedMessage);
+  }
 
 }
 
