@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
+// import { Range } from "./rxjs/range/range";
+import { HigherOrderMaps } from "./rxjs/higher-order-maps/higher-order-maps";
 // import { ProductSelection } from './products/product-selection/product-selection';
 // import { ReviewSearch } from './reviews/review-search/review-search';
 
@@ -8,10 +10,12 @@ import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
   imports: [
     // ProductSelection, 
     // ReviewSearch,
-    RouterLinkActive, 
-    RouterLink, 
-    RouterOutlet
-  ],
+    // RouterLinkActive,
+    // RouterLink,
+    // RouterOutlet,
+    // Range,
+    HigherOrderMaps
+],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -45,6 +45,11 @@ export class ReviewService {
   //   { defaultValue: [] }
   // );
 
-  effSearch = effect(() => console.log(`Search for: ${this.searchText()}`));
-  effLoading = effect(() => console.log(`HTTP loading: ${this.reviewSearchResource.isLoading()}`));
+  // effSearch = effect(() => console.log(`Search for: ${this.searchText()}`));
+  // effLoading = effect(() => console.log(`HTTP loading: ${this.reviewSearchResource.isLoading()}`));
+
+  getReviewUrl(productId: number): string {
+    // Use appropraite regular expression syntax to get an exact match on the ID
+    return `${this.reviewsUrl}?productId=^${productId}$`;
+  }
 }
