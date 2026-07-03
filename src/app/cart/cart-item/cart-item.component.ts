@@ -1,4 +1,4 @@
-import { Component, computed, inject, Input, signal } from '@angular/core';
+import { Component, computed, effect, inject, Input, signal } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -20,11 +20,11 @@ export class CartItemComponent {
   private cartService = inject(CartService);
   // Quantity available (hard-coded to 8)
   // Mapped to an array from 1-8
-  qtyArr = [...Array(8).keys()].map(x => x + 1);
+  item = signal<CartItem>(undefined!)
+  qtyArr = computed(() => [...Array(this.item().product.quantityInStock).keys()].map(x => x + 1));
+  // qtyArr = [...Array(this.stockQty()).keys()].map(x => x + 1);
 
   // Calculate the extended price
-
-  item = signal<CartItem>(undefined!)
   // exPrice = this.cartItem?.quantity * this.cartItem?.product.price;
   exPrice = computed(() => this.item().quantity * this.item().product.price);
 

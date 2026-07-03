@@ -15,7 +15,7 @@
               (ngModelChange)="onQuantitySelected($event)">
         <option disabled
                 value="">--Select a quantity--</option>
-        @for (q of qtyArr; track $index) {
+        @for (q of qtyArr(); track $index) {
           <option>{{ q }}</option>
         }
       </select>
