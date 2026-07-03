@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
+import { CartService } from './cart/cart.service';
 // import { Cart } from "./signals/basics/cart/cart";
 // import { Range } from "./rxjs/range/range";
 // import { HigherOrderMaps } from "./rxjs/higher-order-maps/higher-order-maps";
@@ -22,6 +23,6 @@ import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 export class App {
   protected title = 'Acme Product Management';
   pageTitle = 'Acme Product Management';
-
-  cartCount = 0;
+  private cartService = inject(CartService);
+  cartCount = this.cartService.cartCount;
 }

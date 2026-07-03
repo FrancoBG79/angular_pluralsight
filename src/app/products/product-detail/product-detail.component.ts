@@ -4,6 +4,7 @@ import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { Product } from '../product';
 import { catchError, EMPTY } from 'rxjs';
 import { ProductService } from '../product.service';
+import { CartService } from '../../cart/cart.service';
 
 @Component({
     selector: 'pm-product-detail',
@@ -16,7 +17,7 @@ export class ProductDetailComponent /*implements OnChanges, OnDestroy*/ {
   // @Input() productId: number = 0;
   errorMessage = '';
   private productService = inject(ProductService);
-
+  private cartService = inject(CartService);
   // Product to display
   // product: Product | null = null;
   product$ = this.productService.product$
@@ -29,6 +30,10 @@ export class ProductDetailComponent /*implements OnChanges, OnDestroy*/ {
       )
   // Set the page title
   pageTitle = 'ProductDetail'; // this.product ? `Product Detail for: ${this.product.productName}` : 'Product Detail';
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+  }
     
   // sub!: Subscription;
   
@@ -48,9 +53,6 @@ export class ProductDetailComponent /*implements OnChanges, OnDestroy*/ {
   //       });
   //   }
   // }
-
-  addToCart(product: Product) {
-  }
 
   // ngOnDestroy(): void {
   //   if (this.sub) {
