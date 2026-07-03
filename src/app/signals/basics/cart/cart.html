@@ -1,0 +1,15 @@
+<h1>Shopping Cart</h1>
+
+<select  
+  [ngModel]="quantity()"
+  (ngModelChange)="onQuantitySelected($event)">
+  <option value="0" disabled selected>--Select a quantity---</option>
+  @for(i of qtyAvailable(); track $index) {
+    <option value="{{i}}">{{i}}</option>
+  }
+</select>
+
+<div>Quantity: {{ quantity() }}</div>
+<div>Name: {{ selectedProduct().name }}</div>
+<div>Price: {{ selectedProduct().price | currency }}</div>
+<div [style.color]="color()">Extended Price: {{ exPrice() | currency }}</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
+// import { Cart } from "./signals/basics/cart/cart";
 // import { Range } from "./rxjs/range/range";
 // import { HigherOrderMaps } from "./rxjs/higher-order-maps/higher-order-maps";
 // import { ProductSelection } from './products/product-selection/product-selection';
@@ -13,8 +14,7 @@ import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
     RouterLinkActive,
     RouterLink,
     RouterOutlet,
-    // Range,
-    // HigherOrderMaps
+    // Cart
 ],
   templateUrl: './app.html',
   styleUrl: './app.css'
