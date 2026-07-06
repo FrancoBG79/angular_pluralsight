@@ -5,13 +5,13 @@
       <div class="card-header">
         {{pageTitle}}
       </div>
-      @if (products$ | async; as products) {
+      @if (products(); as products) {
         <div class='card-body'>
           <div class='list-group'>
             @for (product of products; track product.id) {
               <button type='button'
                     class='list-group-item'
-                    [ngClass]="{'active': product.id === (selectedProductId$ | async)}"
+                    [ngClass]="{'active': product.id === selectedProductId() }"
                     (click)='onSelected(product.id)'>
                 {{ product.productName }}
               </button>
@@ -21,9 +21,9 @@
       }
       
     </div>
-    @if (errorMessage) {
+    @if (errorMessage()) {
       <div class="alert alert-danger">
-        {{errorMessage}}
+        {{errorMessage()}}
       </div>
     }
     

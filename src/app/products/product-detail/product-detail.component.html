@@ -1,7 +1,7 @@
-@if (product$ | async; as product) {
+@if (product(); as product) {
   <div class="card">
     <div class="card-header">
-      {{pageTitle}}
+      {{ pageTitle() }}
     </div>
 
     <div class="card-body">
@@ -59,15 +59,15 @@
 }
 
 
-@if (errorMessage) {
+@if (errorMessage()) {
   <div class="card">
     <div class="card-header">
       Product Detail
     </div>
   </div>
 }
-@if (errorMessage) {
+@if (errorMessage()) {
   <div class="alert alert-danger">
-    {{errorMessage}}
+    {{ errorMessage() }}
 </div>
 }

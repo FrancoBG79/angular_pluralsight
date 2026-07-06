@@ -1,8 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 
-import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { Product } from '../product';
-import { catchError, EMPTY } from 'rxjs';
 import { ProductService } from '../product.service';
 import { CartService } from '../../cart/cart.service';
 
@@ -10,27 +9,29 @@ import { CartService } from '../../cart/cart.service';
     selector: 'pm-product-detail',
     templateUrl: './product-detail.component.html',
     standalone: true,
-    imports: [AsyncPipe, CurrencyPipe]
+    imports: [CurrencyPipe]
 })
 export class ProductDetailComponent /*implements OnChanges, OnDestroy*/ {
   // Just enough here for the template to compile
   // @Input() productId: number = 0;
-  errorMessage = '';
+ 
   private productService = inject(ProductService);
   private cartService = inject(CartService);
   // Product to display
   // product: Product | null = null;
-  product$ = this.productService.product$
-     .pipe(
-        catchError(err => {
-          this.errorMessage = err;
-          console.error('Error fetching product:', err);
-          return EMPTY;
-        })
-      )
+  // product$ = this.productService.product$
+  //    .pipe(
+  //       catchError(err => {
+  //         this.errorMessage = err;
+  //         console.error('Error fetching product:', err);
+  //         return EMPTY;
+  //       })
+  //     )
   // Set the page title
-  pageTitle = 'ProductDetail'; // this.product ? `Product Detail for: ${this.product.productName}` : 'Product Detail';
-
+  // pageTitle = 'ProductDetail'; // this.product ? `Product Detail for: ${this.product.productName}` : 'Product Detail';
+  pageTitle = computed(() => this.product() ? `Product Detail for: ${this.product()?.productName}` : 'Product Detail');
+  product = this.productService.product;
+  errorMessage = this.productService.productError;
   addToCart(product: Product) {
     this.cartService.addToCart(product);
   }
