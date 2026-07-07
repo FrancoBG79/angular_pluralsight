@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
-import { CartService } from './rxjs_signals_fundamentals/cart/cart.service';
+// import {
+//     RouterLinkActive,
+//     RouterLink, 
+//     RouterOutlet 
+//   } from '@angular/router';
+// import { CartService } from './rxjs_signals_fundamentals/cart/cart.service';
+import { SiteHeaderComponent } from "./animations/site-header/site-header.component";
 // import { Cart } from "./signals/basics/cart/cart";
 // import { Range } from "./rxjs/range/range";
 // import { HigherOrderMaps } from "./rxjs/higher-order-maps/higher-order-maps";
@@ -12,10 +17,10 @@ import { CartService } from './rxjs_signals_fundamentals/cart/cart.service';
   imports: [
     // ProductSelection, 
     // ReviewSearch,
-    RouterLinkActive,
-    RouterLink,
-    RouterOutlet,
-    // Cart
+    // RouterLinkActive,
+    // RouterLink,
+    // RouterOutlet,
+    SiteHeaderComponent
 ],
   templateUrl: './app.html',
   styleUrl: './app.css'
@@ -23,6 +28,6 @@ import { CartService } from './rxjs_signals_fundamentals/cart/cart.service';
 export class App {
   protected title = 'Acme Product Management';
   pageTitle = 'Acme Product Management';
-  private cartService = inject(CartService);
-  cartCount = this.cartService.cartCount;
+  // private cartService = inject(CartService);
+  // cartCount = this.cartService.cartCount;
 }
