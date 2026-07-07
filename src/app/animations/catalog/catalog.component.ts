@@ -15,6 +15,8 @@ export class CatalogComponent {
   products: IProduct[] = [];
   filter: string = '';
 
+  filterLinks = ['Heads', 'Arms', 'Torsos', 'Bases', 'All'];
+
   constructor(
     private cartSvc: CartService,
     private productSvc: ProductService,
@@ -37,7 +39,7 @@ export class CatalogComponent {
   }
 
   getFilteredProducts() {
-    return this.filter === ''
+    return this.filter === 'All'
       ? this.products
       : this.products.filter(
         (product: any) => product.category === this.filter

@@ -135,3 +135,11 @@ input {
   background-color: #f590c4;
   color: #aaa;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+.red {
+  color: red;
+}
