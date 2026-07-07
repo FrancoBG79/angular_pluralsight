@@ -1,8 +1,8 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
-import { ProductData } from './products/product-data';
-import { ReviewData } from './reviews/review-data';
-import { SupplierData } from './suppliers/supplier-data';
+import { ProductData } from './rxjs_signals_fundamentals/products/product-data';
+import { ReviewData } from './rxjs_signals_fundamentals/reviews/review-data';
+import { SupplierData } from './rxjs_signals_fundamentals/suppliers/supplier-data';
 
 // Required class for the In Memory Web API
 export class AppData implements InMemoryDbService {

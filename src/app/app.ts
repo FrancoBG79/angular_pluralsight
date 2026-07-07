@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
-import { CartService } from './cart/cart.service';
+import { CartService } from './rxjs_signals_fundamentals/cart/cart.service';
 // import { Cart } from "./signals/basics/cart/cart";
 // import { Range } from "./rxjs/range/range";
 // import { HigherOrderMaps } from "./rxjs/higher-order-maps/higher-order-maps";
