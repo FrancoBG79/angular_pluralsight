@@ -6,6 +6,8 @@ import { Component, inject } from '@angular/core';
 //   } from '@angular/router';
 // import { CartService } from './rxjs_signals_fundamentals/cart/cart.service';
 import { SiteHeaderComponent } from "./animations/site-header/site-header.component";
+// import { HomeComponent } from "./animations/home/home.component";
+import { CatalogComponent } from "./animations/catalog/catalog.component";
 // import { Cart } from "./signals/basics/cart/cart";
 // import { Range } from "./rxjs/range/range";
 // import { HigherOrderMaps } from "./rxjs/higher-order-maps/higher-order-maps";
@@ -20,7 +22,9 @@ import { SiteHeaderComponent } from "./animations/site-header/site-header.compon
     // RouterLinkActive,
     // RouterLink,
     // RouterOutlet,
-    SiteHeaderComponent
+    SiteHeaderComponent,
+    // HomeComponent,
+    CatalogComponent
 ],
   templateUrl: './app.html',
   styleUrl: './app.css'

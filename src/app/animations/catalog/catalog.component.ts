@@ -12,7 +12,7 @@ import { ProductDetailsComponent } from "../product-details/product-details.comp
   imports: [RouterLink, RouterLinkActive, ProductDetailsComponent],
 })
 export class CatalogComponent {
-  products: any;
+  products: IProduct[] = [];
   filter: string = '';
 
   constructor(

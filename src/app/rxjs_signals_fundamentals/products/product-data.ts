@@ -1,3 +1,4 @@
+import { IProduct } from '../../animations/catalog/product.model';
 import { Product } from './product';
 
 export class ProductData {
@@ -49,5 +50,5 @@ export class ProductData {
       hasReviews: true
     }
   ];
-
+  
 }
