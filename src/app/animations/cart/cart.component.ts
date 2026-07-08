@@ -36,6 +36,6 @@ export class CartComponent implements OnInit {
 
   getImageUrl(product: IProduct) {
     if (!product) return '';
-    return '/assets/images/robot-parts/' + product.imageName;
+    return 'images/robot-parts/' + product.imageName;
   }
 }
