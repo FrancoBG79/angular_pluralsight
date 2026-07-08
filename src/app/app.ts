@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
-// import {
-//     RouterLinkActive,
-//     RouterLink, 
-//     RouterOutlet 
-//   } from '@angular/router';
+import {
+    RouterLinkActive,
+    RouterLink, 
+    RouterOutlet 
+  } from '@angular/router';
 // import { CartService } from './rxjs_signals_fundamentals/cart/cart.service';
 import { SiteHeaderComponent } from "./animations/site-header/site-header.component";
 // import { HomeComponent } from "./animations/home/home.component";
@@ -21,10 +21,10 @@ import { CatalogComponent } from "./animations/catalog/catalog.component";
     // ReviewSearch,
     // RouterLinkActive,
     // RouterLink,
-    // RouterOutlet,
+    RouterOutlet,
     SiteHeaderComponent,
     // HomeComponent,
-    CatalogComponent
+    // CatalogComponent
 ],
   templateUrl: './app.html',
   styleUrl: './app.css'
