@@ -1,12 +1,12 @@
 <div class="container">
   <div class="filters">
     @for (filter of filterLinks; track $index) {
-      <a routerLink="/catalog" [queryParams]="{filter: filter}" routerLinkActive="active" class="button">{{ filter }}</a>
+      <a [routerLink]="['/catalog']" [queryParams]="{filter: filter}" routerLinkActive="active" class="button">{{ filter }}</a>
     }
   </div>
 
   <ul class="products">
-    @for ( product of getFilteredProducts(); track product.id) {
+    @for ( product of filteredProducts(); track product.id) {
       <li class="product-item">
         <bot-product-details [product]="product" (buy)="addToCart(product)"></bot-product-details>
       </li>
