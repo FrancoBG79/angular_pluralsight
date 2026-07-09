@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-    selector: 'app-root',
+    selector: 'deep-dive-root',
     imports: [RouterOutlet],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss'
+    templateUrl: './deep-dive.component.html',
+    styleUrl: './deep-dive.component.scss'
 })
 export class AppComponent {}
