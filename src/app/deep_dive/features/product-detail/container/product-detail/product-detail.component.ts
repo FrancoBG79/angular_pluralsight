@@ -3,7 +3,7 @@ import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { switchMap } from 'rxjs';
-import { Product } from '../../../../shared/models/product.models';
+import { IDeepDiveProduct } from '../../../../shared/models/product.models';
 import { CheckoutService } from '../../../../shared/services/checkout.service';
 import { ProductImageComponent } from '../../presentational/product-image/product-image.component';
 import { ProductInfoComponent } from '../../presentational/product-info/product-info.component';
@@ -27,7 +27,7 @@ export class ProductDetailComponent {
   );
   private readonly checkoutService = inject(CheckoutService);
 
-  onAddToCartClicked(product: Product): void {
+  onAddToCartClicked(product: IDeepDiveProduct): void {
     this.checkoutService
       .addToCart(product)
       .subscribe(() => this.toastrService.success('Item Added to Cart'));

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Product } from '../../../../shared/models/product.models';
+import { IDeepDiveProduct } from '../../../../shared/models/product.models';
 import { CategoryNamePipe } from '../../../../shared/pipes/category-name.pipe';
 import { CheckoutService } from '../../../../shared/services/checkout.service';
 import { ProductCategoryComponent } from '../../presentational/product-category/product-category.component';
@@ -14,7 +14,7 @@ import { ProductsService } from '../../service/products.service';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements OnInit {
-  products = signal<{ category: string; products: Product[] }[]>([]);
+  products = signal<{ category: string; products: IDeepDiveProduct[] }[]>([]);
   private readonly productsService = inject(ProductsService);
   private readonly checkoutService = inject(CheckoutService);
   private readonly toastrService = inject(ToastrService);
@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.productsService.loadProducts().subscribe((products) => {
       const categoryProductMap = products.reduce(
-        (result: Record<string, Product[]>, product) => {
+        (result: Record<string, IDeepDiveProduct[]>, product) => {
           const category = product.category;
 
           if (!result[category]) {
@@ -52,7 +52,7 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['products', id]);
   }
 
-  onCartClicked(product: Product): void {
+  onCartClicked(product: IDeepDiveProduct): void {
     this.checkoutService.addToCart(product).subscribe(() => {
       this.toastrService.success('Item Added to Cart');
     });

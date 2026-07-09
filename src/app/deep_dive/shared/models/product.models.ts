@@ -4,7 +4,7 @@ export enum ProductCategory {
   BOOK_ROMANCE = 'book_romance',
 }
 
-export type Product = {
+export type IDeepDiveProduct = {
   id: string;
   name: string;
   price: number;

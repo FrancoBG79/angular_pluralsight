@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CheckoutService } from '../../../../shared/services/checkout.service';
 import { ProductListComponent } from '../../presentational/product-list/product-list.component';
-import { Product } from '../../../../shared/models/product.models';
+import { IDeepDiveProduct } from '../../../../shared/models/product.models';
 import { ToastrService } from 'ngx-toastr';
 import { merge } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { merge } from 'rxjs';
   styleUrl: './checkout.component.scss',
 })
 export class CheckoutComponent implements OnInit {
-  cartProducts = signal<Product[]>([]);
+  cartProducts = signal<IDeepDiveProduct[]>([]);
   totalAmount = signal(0);
   private readonly toastrService = inject(ToastrService);
   private readonly checkoutService = inject(CheckoutService);
@@ -34,7 +34,7 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  private calculateTotalAmount(products: Product[]) {
+  private calculateTotalAmount(products: IDeepDiveProduct[]) {
     return products.reduce((acc: number, prev) => acc + prev.price, 0);
   }
 }

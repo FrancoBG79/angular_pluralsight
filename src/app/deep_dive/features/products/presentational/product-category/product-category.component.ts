@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { Product } from '../../../../shared/models/product.models';
+import { IDeepDiveProduct } from '../../../../shared/models/product.models';
 import { ProductComponent } from '../product/product.component';
 
 @Component({
@@ -11,17 +11,17 @@ import { ProductComponent } from '../product/product.component';
 export class ProductCategoryComponent {
   categoryName = input.required<string>();
 
-  products = input.required<Product[]>();
+  products = input.required<IDeepDiveProduct[]>();
 
   clicked = output<string>();
 
-  cartClicked = output<Product>();
+  cartClicked = output<IDeepDiveProduct>();
 
   onClicked(id: string): void {
     this.clicked.emit(id);
   }
 
-  onCartClicked(product: Product): void {
+  onCartClicked(product: IDeepDiveProduct): void {
     this.cartClicked.emit(product);
   }
 }

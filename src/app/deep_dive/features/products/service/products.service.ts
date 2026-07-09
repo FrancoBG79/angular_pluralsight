@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from '../../../shared/models/product.models';
+import { IDeepDiveProduct } from '../../../shared/models/product.models';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProductsService {
   private readonly http = inject(HttpClient);
   readonly #baseUrl = 'api/productsDeepDive';
-  loadProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.#baseUrl);
+  loadProducts(): Observable<IDeepDiveProduct[]> {
+    return this.http.get<IDeepDiveProduct[]>(this.#baseUrl);
   }
 }

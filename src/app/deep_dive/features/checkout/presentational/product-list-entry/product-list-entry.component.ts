@@ -1,6 +1,6 @@
 import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
 import { Component, input, output } from '@angular/core';
-import { Product } from '../../../../shared/models/product.models';
+import { IDeepDiveProduct } from '../../../../shared/models/product.models';
 import { CategoryNamePipe } from '../../../../shared/pipes/category-name.pipe';
 
 @Component({
@@ -10,7 +10,7 @@ import { CategoryNamePipe } from '../../../../shared/pipes/category-name.pipe';
   styleUrl: './product-list-entry.component.scss',
 })
 export class ProductListEntryComponent {
-  product = input.required<Product>();
+  product = input.required<IDeepDiveProduct>();
 
   removeClicked = output();
 

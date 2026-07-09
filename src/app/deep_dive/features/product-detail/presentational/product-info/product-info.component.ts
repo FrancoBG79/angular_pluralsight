@@ -1,6 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, input, output } from '@angular/core';
-import { Product } from '../../../../shared/models/product.models';
+import { IDeepDiveProduct } from '../../../../shared/models/product.models';
 import { CategoryNamePipe } from '../../../../shared/pipes/category-name.pipe';
 import { AddToCartButtonComponent } from '../add-to-cart-button/add-to-cart-button.component';
 
@@ -11,7 +11,7 @@ import { AddToCartButtonComponent } from '../add-to-cart-button/add-to-cart-butt
   styleUrl: './product-info.component.scss',
 })
 export class ProductInfoComponent {
-  product = input.required<Product>();
+  product = input.required<IDeepDiveProduct>();
 
-  addToCartClicked = output<Product>();
+  addToCartClicked = output<IDeepDiveProduct>();
 }

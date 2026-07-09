@@ -1,6 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, input, output } from '@angular/core';
-import { Product } from '../../../../shared/models/product.models';
+import { IDeepDiveProduct } from '../../../../shared/models/product.models';
 
 @Component({
   selector: 'app-product',
@@ -9,10 +9,10 @@ import { Product } from '../../../../shared/models/product.models';
   styleUrl: './product.component.scss',
 })
 export class ProductComponent {
-  product = input.required<Product>();
+  product = input.required<IDeepDiveProduct>();
 
   clicked = output<string>();
-  cartClicked = output<Product>();
+  cartClicked = output<IDeepDiveProduct>();
 
   onClick(): void {
     this.clicked.emit(this.product().id);

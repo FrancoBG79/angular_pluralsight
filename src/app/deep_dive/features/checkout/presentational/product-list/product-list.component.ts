@@ -1,6 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, input, output } from '@angular/core';
-import { Product } from '../../../../shared/models/product.models';
+import { IDeepDiveProduct } from '../../../../shared/models/product.models';
 import { ProductListEntryComponent } from '../product-list-entry/product-list-entry.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { ProductListEntryComponent } from '../product-list-entry/product-list-en
   styleUrl: './product-list.component.scss',
 })
 export class ProductListComponent {
-  products = input.required<Product[]>();
+  products = input.required<IDeepDiveProduct[]>();
 
   totalAmount = input.required<number>();
 

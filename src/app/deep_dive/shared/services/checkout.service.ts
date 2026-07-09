@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Product } from '../models/product.models';
+import { IDeepDiveProduct } from '../models/product.models';
 import { map, Subject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -9,13 +9,13 @@ import { HttpClient } from '@angular/common/http';
 export class CheckoutService {
   readonly #baseUrl = 'api/cartDeepDive';
   readonly #http = inject(HttpClient);
-  readonly #cartProducts = signal<Product[]>([]);
+  readonly #cartProducts = signal<IDeepDiveProduct[]>([]);
 
-  readonly #cartProductsChanged = new Subject<Product[]>();
+  readonly #cartProductsChanged = new Subject<IDeepDiveProduct[]>();
   cartProductsChanged = this.#cartProductsChanged.asObservable();
 
-  addToCart(product: Product) {
-    return this.#http.post<Product[]>(this.#baseUrl, product).pipe(
+  addToCart(product: IDeepDiveProduct) {
+    return this.#http.post<IDeepDiveProduct[]>(this.#baseUrl, product).pipe(
       map((products) => {
         this.#cartProductsChanged.next(products);
 
@@ -26,7 +26,7 @@ export class CheckoutService {
 
   getCartProducts() {
     return this.#http
-      .get<Product[]>(this.#baseUrl)
+      .get<IDeepDiveProduct[]>(this.#baseUrl)
       .pipe(tap((products) => this.#cartProducts.set(products)));
   }
 
