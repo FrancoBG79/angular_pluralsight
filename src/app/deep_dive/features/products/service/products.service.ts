@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductsService {
   private readonly http = inject(HttpClient);
-
+  readonly #baseUrl = 'api/productsDeepDive';
   loadProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:3000/products');
+    return this.http.get<Product[]>(this.#baseUrl);
   }
 }

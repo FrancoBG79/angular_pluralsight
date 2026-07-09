@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CheckoutService {
-  readonly #baseUrl = 'http://localhost:3000/cart/';
+  readonly #baseUrl = 'api/cartDeepDive';
   readonly #http = inject(HttpClient);
   readonly #cartProducts = signal<Product[]>([]);
 
