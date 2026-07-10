@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 import { ProductImageComponent } from '../../presentational/product-image/product-image.component';
@@ -12,7 +12,11 @@ import { ProduductDetailStore } from './product-detail.store';
   styleUrl: './product-detail.component.scss',
   providers: [ProduductDetailStore]
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnInit {
   id = input.required<string>();
-  store = inject(ProduductDetailStore)
+  store = inject(ProduductDetailStore);
+
+    ngOnInit(): void {
+      this.store.loadProductIfNotLoaded(this.id)
+    }
 }

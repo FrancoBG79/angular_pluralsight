@@ -9,38 +9,16 @@ import { HttpClient } from '@angular/common/http';
 export class CheckoutService {
   readonly #baseUrl = 'api/cartDeepDive';
   readonly #http = inject(HttpClient);
-  readonly #cartProducts = signal<IDeepDiveProduct[]>([]);
-
-  readonly #cartProductsChanged = new Subject<IDeepDiveProduct[]>();
-  cartProductsChanged = this.#cartProductsChanged.asObservable();
 
   addToCart(product: IDeepDiveProduct) {
-    return this.#http.post<IDeepDiveProduct[]>(this.#baseUrl, product).pipe(
-      map((products) => {
-        this.#cartProductsChanged.next(products);
-
-        return products;
-      })
-    );
+    return this.#http.post<IDeepDiveProduct[]>(this.#baseUrl, product);
   }
 
   getCartProducts() {
-    return this.#http
-      .get<IDeepDiveProduct[]>(this.#baseUrl)
-      .pipe(tap((products) => this.#cartProducts.set(products)));
+    return this.#http.get<IDeepDiveProduct[]>(this.#baseUrl);
   }
 
   removeFromCart(index: number) {
-    return this.#http.delete(this.#baseUrl + index).pipe(
-      tap(() => {
-        this.#cartProducts.update((products) => {
-          products.splice(index, 1);
-
-          return [...products];
-        });
-
-        this.#cartProductsChanged.next(this.#cartProducts());
-      })
-    );
+    return this.#http.delete(this.#baseUrl + index);
   }
 }

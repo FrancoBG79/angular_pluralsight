@@ -4,21 +4,15 @@ import { computed, inject } from "@angular/core";
 import { GlobalCheckoutStore } from "../../../../shared/store/global-checkout.store";
 import { Router } from "@angular/router";
 import { DeepDiveProduct } from "../../../../deep-dive-product-data";
-
-type ProductState = {
-  products: IDeepDiveProduct[];
-};
-
-const initialProductState: ProductState = {
-  products: [],
-}
+import { GlobalProductsStore } from "../../../../shared/store/global-products.store";
 
 export const ProductStore = signalStore(
-  withState(initialProductState),
-
-  withComputed((store) => ({
+  withComputed((
+    _store,
+    globalProductsStore = inject(GlobalProductsStore)
+  ) => ({
     productsByCategories: computed(() => {
-      const categoryProductMap = store.products().reduce(
+      const categoryProductMap = globalProductsStore.products().reduce(
         (result: Record<string, IDeepDiveProduct[]>, product) => {
           const category = product.category;
 
@@ -43,20 +37,20 @@ export const ProductStore = signalStore(
   })),
 
   withMethods((
-    store, 
+    _store, 
     globalCheckoutStore = inject(GlobalCheckoutStore), 
     router = inject(Router)) => ({
-      getAll() {
-        patchState(store, { products: DeepDiveProduct.products })
-      },
       addToCart: globalCheckoutStore.addToCart,
       onProductClicked(id: string) {
         router.navigate(['products', id]);
       },
   })),
   withHooks({
-    onInit(store) {
-      store.getAll();
+    onInit(
+      _store,
+      globalProductsStore = inject(GlobalProductsStore),
+    ) {
+      globalProductsStore.getAll();
     }
   })
 );

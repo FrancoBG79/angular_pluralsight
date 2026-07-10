@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IDeepDiveProduct } from '../../../shared/models/product.models';
+import { IDeepDiveProduct } from '../models/product.models';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
