@@ -6,7 +6,8 @@ import { CartComponent } from './animations/cart/cart.component';
 // import { PageNotFoundComponent } from './rxjs_signals_fundamentals/utilities/page-not-found.component';
 
 export const routes: Routes = [
-  { path: '', loadChildren: () => import('./deep_dive/deep-dive.routes').then((m) => m.routes) },
+   { path: '', loadChildren: () => import('./angular-signal-forms-course/app-signal-forms.routes').then((m) => m.routes) }
+  // { path: '', loadChildren: () => import('./deep_dive/deep-dive.routes').then((m) => m.routes) },
   //  { path: 'home', component: HomeComponent, title: "Home - Joe's Robot Shop" },
   //   { path: 'catalog', component: CatalogComponent, title: "Catalog - Joe's Robot Shop" },
   //   { path: 'cart', component: CartComponent, title: "Cart - Joe's Robot Shop" },
