@@ -12,5 +12,6 @@ export function dateRange<T>(
     if (start && end && start >= end) {
       return { kind: 'dateRange', message };
     }
+    return undefined;
   });
 }
