@@ -5,8 +5,8 @@ import { AboutNavIconComponent, CoursesNavIconComponent, HamburgerIconComponent,
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  templateUrl: './app-signal-forms.component.html',
+  styleUrls: ['./app-signal-forms.component.css'],
   imports: [RouterLink, RouterLinkActive, RouterOutlet, AppLogoComponent, CoursesNavIconComponent, AboutNavIconComponent, UserNavIconComponent, HamburgerIconComponent]
 })
 export class AppComponent {
