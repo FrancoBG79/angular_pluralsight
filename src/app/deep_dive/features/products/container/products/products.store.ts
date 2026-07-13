@@ -7,6 +7,10 @@ import { DeepDiveProduct } from "../../../../deep-dive-product-data";
 import { GlobalProductsStore } from "../../../../shared/store/global-products.store";
 
 export const ProductStore = signalStore(
+  withState({
+    searchTerm: '',
+  }),
+
   withComputed((
     _store,
     globalProductsStore = inject(GlobalProductsStore)
@@ -37,20 +41,18 @@ export const ProductStore = signalStore(
   })),
 
   withMethods((
-    _store, 
+    store, 
     globalCheckoutStore = inject(GlobalCheckoutStore), 
-    router = inject(Router)) => ({
+    router = inject(Router),
+    globalProductStore = inject(GlobalProductsStore)
+  ) => ({
       addToCart: globalCheckoutStore.addToCart,
+      loadByQuery: globalProductStore.loadByQuery,
       onProductClicked(id: string) {
         router.navigate(['products', id]);
       },
+      searchValueChanged(searchTerm: string) {
+        patchState(store, { searchTerm })
+      }
   })),
-  withHooks({
-    onInit(
-      _store,
-      globalProductsStore = inject(GlobalProductsStore),
-    ) {
-      globalProductsStore.getAll();
-    }
-  })
 );

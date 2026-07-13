@@ -2,7 +2,7 @@ import { patchState, signalStore, withMethods, withState } from "@ngrx/signals";
 import { inject } from "@angular/core";
 import { rxMethod } from "@ngrx/signals/rxjs-interop"
 import { tapResponse } from "@ngrx/operators";
-import { exhaustMap } from "rxjs";
+import { exhaustMap, filter, find, pipe } from "rxjs";
 import { IDeepDiveProduct } from "../models/product.models";
 import { ProductsService } from "../services/products.service";
 
@@ -33,7 +33,17 @@ export const GlobalProductsStore = signalStore(
         ),
       ),
     ),
-
+    loadByQuery: rxMethod<string> (
+      pipe(
+        filter((query) => query.length > 2 || !query),
+        exhaustMap((query) => productsService.loadProducts(query).pipe(
+          tapResponse({
+            next: (products) => patchState(store, { products }),
+            error: console.error
+          })
+        ))
+      )
+    ),
     add(product: IDeepDiveProduct) {
       patchState(store, { products: [...store.products(), product]});
     },

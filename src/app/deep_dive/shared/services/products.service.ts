@@ -9,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class ProductsService {
   private readonly http = inject(HttpClient);
   readonly #baseUrl = 'api/productsDeepDive';
-  loadProducts(): Observable<IDeepDiveProduct[]> {
-    return this.http.get<IDeepDiveProduct[]>(this.#baseUrl);
+  loadProducts(query: string = ''): Observable<IDeepDiveProduct[]> {
+    const options = query ? { params: { query} } : {};
+    return this.http.get<IDeepDiveProduct[]>(this.#baseUrl, options);
   }
 }
